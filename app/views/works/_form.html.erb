@@ -1,0 +1,17 @@
+<%= render('layouts/errors', :object => @work) %>
+
+<%= form_for [@user, @work] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+  <%= f.label :media %>
+  <%= f.text_field :media %>
+  <%= f.label :published %>
+  <%= f.text_field :published %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <p><%= f.submit %></p>
+<% end %>

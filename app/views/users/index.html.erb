@@ -8,8 +8,14 @@
 <hr>
 
 <ul>
-  <% @works.each do |work| %>
-    <li><%= link_to work.name, user_work_path(work.user, work) %></li>
+  <% @worksAlpha.each do |work| %>
+    <li><%= work.name %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @worksDateCreated.each do |work| %>
+    <li><%= work.name %></li>
   <% end %>
 </ul>
 

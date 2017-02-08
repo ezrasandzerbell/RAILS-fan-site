@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @works = Work.all
+    @worksAlpha = @works.order(:name)
+    @worksDateCreated = @works.order(:created_at)
   end
 
   def show

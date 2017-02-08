@@ -7,4 +7,10 @@
 </ul>
 <hr>
 
+<ul>
+  <% @works.each do |work| %>
+    <li><%= link_to work.name, user_work_path(work.user, work) %></li>
+  <% end %>
+</ul>
+
 <%= link_to "New User", new_user_path %>

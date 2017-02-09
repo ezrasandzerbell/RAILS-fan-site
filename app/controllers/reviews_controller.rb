@@ -32,6 +32,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     @work = Work.find(params[:work_id])
+    @user = @work.user
   end
 
   def update

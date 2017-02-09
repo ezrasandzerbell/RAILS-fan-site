@@ -5,28 +5,56 @@
   <a href="/users" class="brand-logo center headerText"> <%= image_tag "the_beatles.png", class: "resizeImage" %> </a>
 <% end %>
 
-<h1>Users</h1>
 
-<ul>
-  <% @users.each do |user| %>
-    <li><%= link_to user.name, user_path(user) %></li>
+  <% if @featured %>
+  <div class="row" style="text-align: center;">
+    <h2>Featured</h2>
+    <div class="row">
+      <div class="col m3">
+
+      </div>
+      <div class="col m6">
+        <div class="card ">
+          <div class="card-image">
+            <%= image_tag @featured.image, class: "resizeWorkImage" %>
+          </div>
+          <div class="card-content">
+            <h4><%= link_to @featured.name, work_path(@featured), style: "color: black; text-align: center;"%></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <% else %>
+
   <% end %>
-</ul>
-<hr>
 
-<h2>List of Works</h2>
-<ul>
-  <% @works.each do |work| %>
-    <li><%= link_to work.name, work_path(work) %></li>
-  <% end %>
-</ul>
-<hr>
 
-<p>Sort by:
-  <%= link_to "Title", users_path(order: 'name') %>
-  or
-  <%= link_to "Date Created", users_path(order: 'created_at') %>
-</p>
 
-<h2>This is the featured:</h2>
-<%= @featured.name %>
+<div class="row">
+  <div class="col m6">
+    <ul>
+      <h2>Users</h2>
+      <% @users.each do |user| %>
+        <li> <h5><%= link_to user.name, user_path(user) %></h5> </li>
+      <% end %>
+    </ul>
+    <hr>
+  </div>
+  <div class="col m6">
+    <h2>List of Works</h2>
+    <ul>
+      <% @works.each do |work| %>
+        <li><h5><%= link_to work.name, work_path(work) %></h5></li>
+      <% end %>
+    </ul>
+    <hr>
+    <p>Sort by:
+      <%= link_to "Title", users_path(order: 'name') %>
+      or
+      <%= link_to "Date Created", users_path(order: 'created_at') %>
+    </p>
+  </div>
+</div>

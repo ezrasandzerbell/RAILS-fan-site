@@ -1,6 +1,10 @@
 <% content_for(:navbar) do %>
   <a href="/users" class="brand-logo center headerText"> <%= image_tag "the_beatles.png", class: "resizeImage" %> </a>
-<% end %>
+  <ul class="left">
+    <li><%= link_to "User", user_path(@user.id), class: "headerLis"%></li>
+    <li><%= link_to "Work", user_work_path(@user.id, @work.id), class: "headerLis"%></li>
+  </ul>
+  <% end %>
 
 <h1>Edit review</h1>
 

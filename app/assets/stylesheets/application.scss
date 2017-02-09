@@ -29,6 +29,16 @@ a.headerText {
   filter: invert(1);
 }
 
+.resizeWorkImage {
+  height: 250px;
+  width: auto;
+}
+
+input[type="text"],
+input[type="number"] {
+  border-bottom: 1px solid white;
+}
+
 .navbar {
   height: 120px;
   .headerLis {
@@ -53,11 +63,6 @@ body {
 .input-field label {
    color: white;
  }
-
- .input-field input[type=text]:focus {
-      border-bottom: 1px solid white;
-      box-shadow: 0 1px 0 0 white;
-    }
 
 label {
   color: white;

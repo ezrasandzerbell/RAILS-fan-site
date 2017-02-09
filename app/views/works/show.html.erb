@@ -1,35 +1,43 @@
 <% content_for(:navbar) do %>
   <a href="/users" class="brand-logo center headerText"> <%= image_tag "the_beatles.png", class: "resizeImage" %> </a>
+  <ul class="left">
+    <li><%= link_to "User", user_path(@work.user_id), class: "headerLis"%></li>
+    <li><%= link_to "Add a review", new_work_review_path(@work), class: "headerLis" %></li>
+  </ul>
 <% end %>
 
-asdfsd
-<%= @work.name %>
+<h2><%= @work.name %></h2>
 <br>
-<%= image_tag @work.image %>
+<%= image_tag @work.image, class: "resizeWorkImage" %>
+<br><br>
 <%= @work.media %>
 <%= @work.published %>
 <%= @work.rating %>
 <%= @work.content.html_safe %>
 
-
-asdf
-
-<p><%= link_to "Add a review", new_work_review_path(@work) %></p>
+<br><br><br><br>
 
 <p>
   average rating: <%= @averageRating  %>
 </p>
 
-
+<div class="row">
   <% @work.reviews.each do |review| %>
-    <div>
-      <h3><%=review.title%></h3>
-      <h5><%= review.username %></h5>
-      <h5><%= review.rating %></h5>
-      <p><%= review.content %></p>
-      <%= link_to "Edit", edit_work_review_path(@work, review) %> |
-      <%= link_to "Delete", work_review_path(@work, review),
-                               :data => {:confirm => "Are you sure?",
-                                              :method => "delete"} %>
-    </div>
-  <% end %>
+        <div class="col s12 m6">
+          <div class="card white">
+            <div class="card-content black-text">
+              <span class="card-title"><%=review.title%></span>
+              <p><%= review.username %></p>
+              <p><%= review.rating %></p>
+              <p><%= review.content %></p>
+            </div>
+            <div class="card-action">
+              <%= link_to "Edit", edit_work_review_path(@work, review) %>
+              <%= link_to "Delete", work_review_path(@work, review),
+                                       :data => {:confirm => "Are you sure?",
+                                                      :method => "delete"} %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>

@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     else
       @works = Work.all
     end
+
+    @featured = Work.order('RANDOM()').first
   end
 
   def show

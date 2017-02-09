@@ -7,16 +7,19 @@
 </ul>
 <hr>
 
+<h2>List of Works</h2>
 <ul>
-  <% @worksAlpha.each do |work| %>
-    <li><%= work.name %></li>
+  <% @works.each do |work| %>
+    <li><%= link_to work.name, user_work_path(work.user, work) %></li>
   <% end %>
 </ul>
+<hr>
 
-<ul>
-  <% @worksDateCreated.each do |work| %>
-    <li><%= work.name %></li>
-  <% end %>
-</ul>
+<p>Sort by:
+  <%= link_to "Title", users_path(order: 'name') %>
+  or
+  <%= link_to "Date Created", users_path(order: 'created_at') %>
+</p>
+
 
 <%= link_to "New User", new_user_path %>

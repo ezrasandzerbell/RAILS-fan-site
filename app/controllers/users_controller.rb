@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @works = Work.all
-    @worksAlpha = @works.order(:name)
-    @worksDateCreated = @works.order(:created_at)
+    if params[:order] == 'name'
+      @works = Work.all.order('name')
+    elsif params[:order] == 'created_at'
+      @works = Work.all.order('created_at')
+    else
+      @works = Work.all
+    end
   end
 
   def show

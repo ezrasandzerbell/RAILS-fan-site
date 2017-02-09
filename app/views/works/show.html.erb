@@ -1,10 +1,18 @@
-<%=@work.name %>
+<% content_for(:navbar) do %>
+  <a href="/users" class="brand-logo center headerText"> <%= image_tag "the_beatles.png", class: "resizeImage" %> </a>
+<% end %>
+
+asdfsd
+<%= @work.name %>
 <br>
 <%= image_tag @work.image %>
 <%= @work.media %>
 <%= @work.published %>
 <%= @work.rating %>
 <%= @work.content.html_safe %>
+
+
+asdf
 
 <p><%= link_to "Add a review", new_work_review_path(@work) %></p>
 

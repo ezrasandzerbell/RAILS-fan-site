@@ -1,3 +1,11 @@
+<% content_for(:navbar) do %>
+  <ul class="left">
+    <li><%= link_to "Users", users_path, class: "headerLis" %></li>
+    <li><%= link_to "New Work", new_user_work_path(@user), class: "headerLis" %></li>
+  </ul>
+  <a href="/users" class="brand-logo center headerText"> <%= image_tag "the_beatles.png", class: "resizeImage" %> </a>
+<% end %>
+
 <h1><%= @user.name %></h1>
 
 <% if @user.works.any? %>
@@ -18,8 +26,6 @@
   <p>There are no works yet!</p>
 <% end %>
 
-<p><%= link_to "Add a work", new_user_work_path(@user) %></p>
-<p><%= link_to "Return to users", users_path %></p>
 <p><%= link_to "Edit User", edit_user_path(@user) %></p>
 <p><%= link_to "Delete User", user_path(@user),
                           :data => {:confirm => "You sure?",

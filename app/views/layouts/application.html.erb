@@ -9,6 +9,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default navbar-fixed-top headBGColor">
+      <%= yield(:navbar) %>
+    </nav>
+    <div class="container marginTop">
+        <%= yield %>
+    </div>
   </body>
 </html>

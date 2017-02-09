@@ -5,4 +5,5 @@ class Review < ActiveRecord::Base
   validates :username, :presence => true
   validates :rating, :presence => true
   validates :content, :presence => true
+
 end

@@ -5,3 +5,21 @@
 <%= @work.published %>
 <%= @work.rating %>
 <%= @work.content.html_safe %>
+
+<p><%= link_to "Add a review", new_work_review_path(@work) %></p>
+
+<p>
+  average rating: <%= @averageRating  %>
+</p>
+
+<ul>
+  <% @work.reviews.each do |review| %>
+    <li>
+      <%= link_to review.title, work_review_path(@work, review) %> |
+      <%= link_to "Edit", edit_work_review_path(@work, review) %> |
+      <%= link_to "Delete", work_review_path(@work, review),
+                               :data => {:confirm => "Are you sure?",
+                                              :method => "delete"} %>
+    </li>
+  <% end %>
+</ul>

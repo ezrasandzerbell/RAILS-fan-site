@@ -2,6 +2,7 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @averageRating = @work.getAverageRating()
   end
 
   def new

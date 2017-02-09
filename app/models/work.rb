@@ -1,6 +1,6 @@
 class Work < ActiveRecord::Base
   belongs_to :user
-
+  has_many :reviews
   before_save :capitalize_name
 
   validates :name, :presence => true
@@ -13,4 +13,17 @@ class Work < ActiveRecord::Base
   def capitalize_name
     self.name = self.name.titleize
   end
+
+  def getAverageRating
+    allRatings = []
+    allReviews = self.reviews
+    allReviews.each do |review|
+      allRatings << review.rating
+    end
+    lengthNum = allRatings.length
+    sumTotal = allRatings.sum
+    finalNum = sumTotal / lengthNum
+    return finalNum
+  end
+
 end

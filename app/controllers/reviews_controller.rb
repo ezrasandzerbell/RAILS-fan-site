@@ -2,20 +2,22 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @work = Work.find(params[:id])
+    @work = Work.find(params[:work_id])
     @user = @work.user
   end
 
   def new
-    @work = Work.find(params[:id])
+    @work = Work.find(params[:work_id])
+    @user = @work.user
     @review = @work.reviews.new
   end
 
   def create
-    @work = Work.find(params[:id])
+    @work = Work.find(params[:work_id])
     @review = @work.reviews.new(review_params)
+    @review.user_id = @work.user.id
     if @review.save
-      redirect_to user_work_path(@review.work)
+      redirect_to work_path(@review.work)
     else
       render :new
     end
@@ -29,12 +31,12 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @work = Work.find(params[:id])
+    @work = Work.find(params[:work_id])
   end
 
   def update
     @review = Review.find(params[:id])
-    @work = Work.find(params[:id])
+    @work = Work.find(params[:work_id])
     if @review.update(review_params)
       redirect_to user_work_path(@review.work)
     else
@@ -44,6 +46,6 @@ class ReviewsController < ApplicationController
 
 private
   def review_params
-    params.require(:work).permit(:title, :username, :rating, :content)
+    params.require(:review).permit(:title, :username, :rating, :content)
   end
 end

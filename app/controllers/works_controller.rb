@@ -2,7 +2,8 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
-    @averageRating = @work.getAverageRating()
+    workTemp = @work
+    @averageRating = workTemp.getAverageRating()
   end
 
   def new
@@ -40,7 +41,6 @@ class WorksController < ApplicationController
       render :edit
     end
   end
-
 
 private
   def work_params

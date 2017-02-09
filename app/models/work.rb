@@ -16,14 +16,17 @@ class Work < ActiveRecord::Base
 
   def getAverageRating
     allRatings = []
-    allReviews = self.reviews
-    allReviews.each do |review|
-      allRatings << review.rating
+    if self.reviews.any?
+      allReviews = self.reviews
+      allReviews.each do |review|
+        allRatings << review.rating
+      end
+      lengthNum = allRatings.length
+      sumTotal = allRatings.sum
+      finalNum = sumTotal / lengthNum
+      return finalNum
+    else
+      return "No reviews yet"
     end
-    lengthNum = allRatings.length
-    sumTotal = allRatings.sum
-    finalNum = sumTotal / lengthNum
-    return finalNum
   end
-
 end

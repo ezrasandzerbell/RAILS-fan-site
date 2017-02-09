@@ -1,4 +1,4 @@
-<%= @work.name %>
+<%=@work.name %>
 <br>
 <%= image_tag @work.image %>
 <%= @work.media %>
@@ -12,14 +12,16 @@
   average rating: <%= @averageRating  %>
 </p>
 
-<ul>
+
   <% @work.reviews.each do |review| %>
-    <li>
-      <%= link_to review.title, work_review_path(@work, review) %> |
+    <div>
+      <h3><%=review.title%></h3>
+      <h5><%= review.username %></h5>
+      <h5><%= review.rating %></h5>
+      <p><%= review.content %></p>
       <%= link_to "Edit", edit_work_review_path(@work, review) %> |
       <%= link_to "Delete", work_review_path(@work, review),
                                :data => {:confirm => "Are you sure?",
                                               :method => "delete"} %>
-    </li>
+    </div>
   <% end %>
-</ul>

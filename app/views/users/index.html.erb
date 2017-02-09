@@ -10,7 +10,7 @@
 <h2>List of Works</h2>
 <ul>
   <% @works.each do |work| %>
-    <li><%= link_to work.name, user_work_path(work.user, work) %></li>
+    <li><%= link_to work.name, work_path(work) %></li>
   <% end %>
 </ul>
 <hr>
